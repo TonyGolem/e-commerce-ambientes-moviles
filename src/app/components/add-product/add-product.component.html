@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nuevo producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input
+            [(ngModel)]="newProduct.title"
+            label="Nombre"
+            labelPlacement="floating"
+            placeholder="Nombre del producto">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input
+            [(ngModel)]="newProduct.price"
+            type="number"
+            label="Precio"
+            labelPlacement="floating"
+            placeholder="0.00"
+            step="0.01"
+            min="0">
+            <ion-text slot="start" color="medium" class="currency-symbol">$</ion-text>
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input
+            [(ngModel)]="newProduct.description"
+            label="Descripción"
+            labelPlacement="floating"
+            placeholder="Descripción del producto">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input
+            [(ngModel)]="newProduct.category"
+            label="Categoría"
+            labelPlacement="floating"
+            placeholder="Ej: electronics, clothing...">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input
+            [(ngModel)]="newProduct.image"
+            label="URL de imagen"
+            labelPlacement="floating"
+            placeholder="https://...">
+          </ion-input>
+        </ion-item>
+        <p class="image-hint">
+          <ion-icon name="information-circle-outline"></ion-icon>
+          ¿No tienes una URL?
+          <ion-button size="small" fill="clear" color="primary" (click)="setRandomImage()">
+            <ion-icon slot="start" name="image-outline"></ion-icon>
+            Usar imagen aleatoria
+          </ion-button>
+        </p>
+        @if (newProduct.image) {
+          <img [src]="newProduct.image" alt="preview" class="image-preview" />
+        }
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input
+            [(ngModel)]="newProduct.rating.rate"
+            type="number"
+            label="Rating"
+            labelPlacement="floating"
+            placeholder="0.0 - 5.0">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-margin-top">
+      <ion-col>
+        <ion-button expand="block" color="primary" (click)="confirm()">
+          <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+          Guardar producto
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" fill="outline" color="danger" (click)="cancel()">
+          <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+          Cancelar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

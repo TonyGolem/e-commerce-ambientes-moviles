@@ -1,0 +1,81 @@
+<ion-grid>
+  <ion-row class="ion-align-items-center">
+    <ion-col size="8">
+      <ion-searchbar
+        [(ngModel)]="searchQuery"
+        placeholder="Buscar por nombre o categoría..."
+        debounce="300">
+      </ion-searchbar>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button fill="clear" (click)="openAddProductModal()">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+        <!-- <ion-badge color="danger">{{ products.length }}</ion-badge> -->
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="chips-vertical-carousel">
+    <ion-col>
+      <ion-chip>
+        <ion-label>All</ion-label>
+      </ion-chip>
+    </ion-col>
+    <ion-col>
+      <ion-chip>
+        <ion-label>Electronics</ion-label>
+      </ion-chip>
+    </ion-col>
+    <ion-col>
+      <ion-chip>
+        <ion-label>Jewelry</ion-label>
+      </ion-chip>
+    </ion-col>
+    <ion-col>
+      <ion-chip>
+        <ion-label>Men's clothing</ion-label>
+      </ion-chip>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="cards-container">
+    @for (product of filteredProducts; track product.id) {
+      <ion-col size="12" size-md="6">
+        <ion-card>
+          <ion-card-header>
+            <img [src]="product.image" [alt]="product.title" class="product-card-image">
+          </ion-card-header>
+          <ion-card-content>
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="12">
+                  <h3 class="item-name">{{ product.title }}</h3>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12">
+                  <div class="rating-container">
+                    <ion-icon name="star"></ion-icon>
+                    <p>{{ product.rating.rate }}</p>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12">
+                  <p class="price-title">${{ product.price }}</p>
+                  <ion-button expand="block" fill="solid" class="action-button">Agregar al carrito</ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    }
+  </ion-row>
+
+</ion-grid>

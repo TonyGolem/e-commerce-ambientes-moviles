@@ -1,17 +1,12 @@
-import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { ProductListComponent } from '../components/product-list/product-list.component';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { infoProductoI } from '../interfaces/info-usuario.interfaces';
 
-@Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, ProductListComponent],
+@Injectable({
+  providedIn: 'root'
 })
-export class HomePage {
+export class ProductsService {
 
-  products: infoProductoI[] = [
+  productsList: WritableSignal<infoProductoI[]> = signal<infoProductoI[]>([
     {
       id: 1,
       title: 'Essence Mascara Lash Princess',
@@ -84,11 +79,8 @@ export class HomePage {
       image: 'https://cdn.dummyjson.com/product-images/fragrances/dior-j%27adore/thumbnail.webp',
       rating: { rate: 4.6, count: 389 }
     }
-  ];
+  ]);
 
-  onProductAdded(newProduct: infoProductoI) {
-    newProduct.id = this.products.length + 1;
-    this.products = [...this.products, newProduct];
-  }
+  constructor() { }
 
 }

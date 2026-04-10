@@ -1,0 +1,44 @@
+ion-content {
+  --background: #f9fafb;
+}
+
+
+.chips-vertical-carousel {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 4px;
+  text-wrap: nowrap;
+}
+
+
+.product-card-image {
+  width: 100%;
+  height: auto;
+}
+
+ion-card {
+  border-radius: 20px;
+}
+
+.item-name {
+  font-weight: bold;
+  color: #1f2937;
+}
+
+
+.rating-container {
+  display: flex;
+  gap: 5px;
+}
+
+.action-button {
+  margin: 20px;
+}
+
+.price-title{
+  font-size: 1.5rem;
+  color: #1f2937;
+}
