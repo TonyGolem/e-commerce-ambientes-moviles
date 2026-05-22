@@ -2,6 +2,29 @@ ion-content {
   --background: #f9fafb;
 }
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.cart-btn-wrapper {
+  position: relative;
+  display: inline-flex;
+
+  .cart-badge {
+    position: absolute;
+    top: 4px;
+    right: 2px;
+    font-size: 10px;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    pointer-events: none;
+  }
+}
+
 
 .chips-vertical-carousel {
   display: flex;

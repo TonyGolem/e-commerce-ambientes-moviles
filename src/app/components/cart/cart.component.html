@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Carrito de compras</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  @if (cartItems.length === 0) {
+    <div class="empty-cart">
+      <ion-icon name="cart-outline"></ion-icon>
+      <p>Tu carrito está vacío</p>
+    </div>
+  } @else {
+    <div class="cart-list">
+      @for (item of cartItems; track item.product.id) {
+        <div class="cart-card">
+          <img [src]="item.product.image" [alt]="item.product.title" class="cart-item-img" />
+          <div class="cart-item-info">
+            <p class="cart-item-title">{{ item.product.title }}</p>
+            <p class="cart-item-price">${{ item.product.price }}</p>
+            <div class="quantity-row">
+              <ion-button fill="clear" size="small" (click)="decrease(item.product.id)">
+                <ion-icon slot="icon-only" name="remove-circle-outline"></ion-icon>
+              </ion-button>
+              <span class="quantity">{{ item.quantity }}</span>
+              <ion-button fill="clear" size="small" (click)="increase(item.product.id)">
+                <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+              </ion-button>
+              <ion-button fill="clear" size="small" color="danger" class="remove-btn" (click)="remove(item)">
+                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+        </div>
+        <hr class="cart-divider" />
+      }
+    </div>
+  }
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-content">
+      <div class="footer-total">
+        <span class="total-label">Total:</span>
+        <span class="total-price">${{ total | number: '1.2-2' }}</span>
+      </div>
+      <ion-button color="primary" fill="solid" (click)="close()">
+        <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+        Aceptar
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

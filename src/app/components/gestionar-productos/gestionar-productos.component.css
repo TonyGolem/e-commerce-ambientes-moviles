@@ -1,0 +1,73 @@
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  text-align: center;
+  color: var(--ion-color-medium);
+}
+
+.empty-state ion-icon {
+  font-size: 64px;
+  margin-bottom: 12px;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  margin: 0 0 4px;
+}
+
+.manage-card {
+  border-radius: 16px;
+}
+
+.card-header-content {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.manage-product-image {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f3f4f6;
+  flex-shrink: 0;
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.manage-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin: 0;
+  color: #1f2937;
+}
+
+.manage-description {
+  font-size: 0.82rem;
+  color: var(--ion-color-medium);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.manage-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+  margin: 0 0 12px;
+}
+
+.manage-actions {
+  display: flex;
+  gap: 8px;
+}

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { IonHeader, IonTitle, IonToolbar, IonButton, IonButtons, IonContent, IonGrid, IonRow, IonCol, IonItem, IonInput, IonText, ModalController, IonIcon } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { infoProductoI } from 'src/app/interfaces/info-usuario.interfaces';
@@ -10,7 +10,9 @@ import { infoProductoI } from 'src/app/interfaces/info-usuario.interfaces';
   standalone: true,
   imports: [IonIcon, IonHeader, IonTitle, IonToolbar, IonButton, IonButtons, IonContent, IonGrid, IonRow, IonCol, IonItem, IonInput, IonText, FormsModule]
 })
-export class AddProductComponent {
+export class AddProductComponent implements OnInit {
+
+  @Input() product?: infoProductoI;
 
   private modalController = inject(ModalController);
 
@@ -35,16 +37,26 @@ export class AddProductComponent {
     rating: { rate: 0, count: 0 }
   };
 
-  setRandomImage() {
+  get isEditMode(): boolean {
+    return !!this.product;
+  }
+
+  ngOnInit(): void {
+    if (this.product) {
+      this.newProduct = { ...this.product };
+    }
+  }
+
+  setRandomImage(): void {
     const index = Math.floor(Math.random() * this.randomImages.length);
     this.newProduct.image = this.randomImages[index];
   }
 
-  cancel() {
+  cancel(): void {
     this.modalController.dismiss(null, 'cancel');
   }
 
-  confirm() {
+  confirm(): void {
     this.modalController.dismiss(this.newProduct, 'confirm');
   }
 

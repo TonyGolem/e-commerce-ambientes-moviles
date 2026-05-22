@@ -1,12 +1,38 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>E-Commerce</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-tabs>
+  <ion-tab tab="list">
+    <div id="list-page" class="ion-page">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Listado de productos</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <app-product-list></app-product-list>
+      </ion-content>
+    </div>
+  </ion-tab>
 
-<ion-content [fullscreen]="true">
-  <app-product-list
-    [products]="products"
-    (productAdded)="onProductAdded($event)">
-  </app-product-list>
-</ion-content>
+  <ion-tab tab="manage">
+    <div id="manage-page" class="ion-page">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Gestionar productos</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <app-gestionar-productos></app-gestionar-productos>
+      </ion-content>
+    </div>
+  </ion-tab>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="list">
+      <ion-icon name="storefront-outline"></ion-icon>
+      Productos
+    </ion-tab-button>
+    <ion-tab-button tab="manage">
+      <ion-icon name="settings-outline"></ion-icon>
+      Gestionar
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

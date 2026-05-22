@@ -1,0 +1,41 @@
+@if (customProducts.length === 0) {
+  <div class="empty-state">
+    <ion-icon name="cube-outline"></ion-icon>
+    <p>No hay productos creados aún.</p>
+    <small>Usa el botón <strong>+</strong> en el listado para agregar uno.</small>
+  </div>
+} @else {
+  <ion-grid>
+    <ion-row>
+      @for (product of customProducts; track product.id) {
+        <ion-col size="12" size-md="6">
+          <ion-card class="manage-card">
+            <ion-card-header>
+              <div class="card-header-content">
+                <img [src]="product.image" [alt]="product.title" class="manage-product-image" />
+                <div class="header-info">
+                  <h3 class="manage-title">{{ product.title }}</h3>
+                  <ion-badge color="secondary">{{ product.category }}</ion-badge>
+                </div>
+              </div>
+            </ion-card-header>
+            <ion-card-content>
+              <p class="manage-description">{{ product.description }}</p>
+              <p class="manage-price">${{ product.price }}</p>
+              <div class="manage-actions">
+                <ion-button fill="outline" color="primary" (click)="editProduct(product)">
+                  <ion-icon slot="start" name="create-outline"></ion-icon>
+                  Editar
+                </ion-button>
+                <ion-button fill="outline" color="danger" (click)="deleteProduct(product)">
+                  <ion-icon slot="start" name="trash-outline"></ion-icon>
+                  Eliminar
+                </ion-button>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+}
